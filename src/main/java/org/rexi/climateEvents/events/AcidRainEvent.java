@@ -39,11 +39,7 @@ public class AcidRainEvent implements Listener{
 
     public AcidRainEvent(JavaPlugin plugin) {
         this.plugin = plugin;
-        acidRainBossBar = Bukkit.createBossBar(
-                title,
-                BarColor.GREEN,
-                BarStyle.SEGMENTED_6
-        );
+        acidRainBossBar = Bukkit.createBossBar(title, BarColor.GREEN, BarStyle.SEGMENTED_6);
     }
 
     public void startAcidRain() {

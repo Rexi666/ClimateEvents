@@ -18,33 +18,36 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitTask;
 import org.rexi.climateEvents.ClimateEvents;
 
 import java.util.Random;
+
 import static org.rexi.climateEvents.ClimateEvents.prefix;
 
-public class SolarFlareEvent implements Listener {
+public class ElectricStormEvent implements Listener {
 
     private final JavaPlugin plugin;
-    private BukkitTask solarFlareTask;
-    private static final long SOLAR_FLARE_DURATION = 6000L;
-    private BossBar solarFlareBossBar;
+    private BukkitTask electricStormTask;
+    private static final long ELECTRIC_STORM_DURATION = 6000L;
+    private static final double LIGHTNING_PROBABILITY = 0.1;
+    private BossBar electricStormBossBar;
     private final Random random = new Random();
-    private long originalTime;
 
-    Component titulo = Component.text("¡Alerta! Erupción Solar en curso").color(NamedTextColor.RED).decorate(TextDecoration.BOLD);
+    Component titulo = Component.text("¡Alerta! Tormenta Eléctrica en curso").color(NamedTextColor.RED).decorate(TextDecoration.BOLD);
     String title = LegacyComponentSerializer.legacySection().serialize(titulo);
 
     String worldName = ClimateEvents.getInstance().getConfig().getString("world");
     World mundo = Bukkit.getWorld(worldName);
 
-    public SolarFlareEvent(JavaPlugin plugin) {
+    public ElectricStormEvent(JavaPlugin plugin) {
         this.plugin = plugin;
-        solarFlareBossBar = Bukkit.createBossBar(title, BarColor.RED, BarStyle.SEGMENTED_6);
+        electricStormBossBar = Bukkit.createBossBar(title, BarColor.RED, BarStyle.SEGMENTED_6);
     }
 
-    public void startSolarFlare() {
+    public void startElectricStorm() {
         if (ClimateEvents.getInstance().isEventActive()) {
             return;
         }
@@ -55,36 +58,37 @@ public class SolarFlareEvent implements Listener {
             return;
         }
 
-        Bukkit.getConsoleSender().sendMessage(prefix.append(Component.text("La erupción solar ha comenzado").color(NamedTextColor.YELLOW)));
+        Bukkit.getConsoleSender().sendMessage(prefix.append(Component.text("La tormenta eléctrica ha comenzado").color(NamedTextColor.YELLOW)));
         ClimateEvents.getInstance().eventActive = true;
 
-        originalTime = world.getTime();
-        world.setTime(6000);
-
         for (Player player : world.getPlayers()) {
-            solarFlareBossBar.addPlayer(player);
-            player.sendMessage(Component.text("¡La erupción solar ha comenzado!").color(NamedTextColor.RED));
+            electricStormBossBar.addPlayer(player);
+            player.sendMessage(Component.text("¡La tormenta eléctrica ha comenzado!").color(NamedTextColor.RED));
         }
-        solarFlareBossBar.setVisible(true);
+        electricStormBossBar.setVisible(true);
+
+        world.setStorm(true);
+        world.setThundering(true);
 
         long[] elapsedTicks = {0};
 
-        solarFlareTask = Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+        electricStormTask = Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             elapsedTicks[0] += 20;
             updateBossBarProgress(elapsedTicks[0]);
 
             for (Player player : world.getPlayers()) {
                 if (!isUnderCover(player) && !isInCreativeOrEspectator(player)) {
-                    player.damage(1.5);
-                    if (random.nextDouble() < 0.5) {
-                        player.setFireTicks(20);
-                        player.sendMessage(Component.text("¡Te estás quemando debido a la erupción solar!").color(NamedTextColor.RED));
+                    if (random.nextDouble() < LIGHTNING_PROBABILITY) {
+                        Location playerLocation = player.getLocation();
+                        Location strikeLocation = playerLocation.add(random.nextInt(10) - 5, 0, random.nextInt(10) - 5);
+                        world.strikeLightning(strikeLocation);
                     }
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 100, 1));
                 }
             }
-        }, 0L, 20L);
+        }, 0L, 100L);
 
-        Bukkit.getScheduler().runTaskLater(plugin, this::stopSolarFlare, SOLAR_FLARE_DURATION);
+        Bukkit.getScheduler().runTaskLater(plugin, this::stopElectricStorm, ELECTRIC_STORM_DURATION);
     }
 
     private boolean isUnderCover(Player player) {
@@ -100,41 +104,42 @@ public class SolarFlareEvent implements Listener {
     }
 
     private void updateBossBarProgress(long elapsedTicks) {
-        double progress = 1.0 - (double) elapsedTicks / SOLAR_FLARE_DURATION;
-        solarFlareBossBar.setProgress(Math.max(0, Math.min(progress, 1.0)));
+        double progress = 1.0 - (double) elapsedTicks / ELECTRIC_STORM_DURATION;
+        electricStormBossBar.setProgress(Math.max(0, Math.min(progress, 1.0)));
     }
 
-    public void stopSolarFlare() {
-        if (solarFlareTask != null && !solarFlareTask.isCancelled()) {
-            solarFlareTask.cancel();
-            solarFlareTask = null;
+    public void stopElectricStorm() {
+        if (electricStormTask != null && !electricStormTask.isCancelled()) {
+            electricStormTask.cancel();
+            electricStormTask = null;
             World world = mundo;
             if (world != null) {
-                Bukkit.getConsoleSender().sendMessage(prefix.append(Component.text("La erupción solar ha terminado").color(NamedTextColor.YELLOW)));
+                Bukkit.getConsoleSender().sendMessage(prefix.append(Component.text("La tormenta eléctrica ha terminado").color(NamedTextColor.YELLOW)));
                 ClimateEvents.getInstance().eventActive = false;
+                world.setStorm(false);
+                world.setThundering(false);
                 for (Player player : world.getPlayers()) {
-                    player.sendMessage(Component.text("¡La erupción solar ha terminado!").color(NamedTextColor.GREEN));
-                    solarFlareBossBar.removePlayer(player);
+                    player.sendMessage(Component.text("¡La tormenta eléctrica ha terminado!").color(NamedTextColor.GREEN));
+                    electricStormBossBar.removePlayer(player);
                 }
-                world.setTime(originalTime);
             }
-            solarFlareBossBar.setVisible(false);
+            electricStormBossBar.setVisible(false);
         }
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if (isSolarFlareActive()) {
-            solarFlareBossBar.removePlayer(player);
+        if (isElectricStormActive()) {
+            electricStormBossBar.removePlayer(player);
         }
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (isSolarFlareActive()) {
-            solarFlareBossBar.addPlayer(player);
+        if (isElectricStormActive()) {
+            electricStormBossBar.addPlayer(player);
         }
     }
 
@@ -142,17 +147,17 @@ public class SolarFlareEvent implements Listener {
     public void onPlayerChangedWorld(PlayerChangedWorldEvent event) {
         Player player = event.getPlayer();
         World destinationWorld = player.getWorld();
-        if (isSolarFlareActive()) {
+        if (isElectricStormActive()) {
             if (destinationWorld == mundo) {
-                solarFlareBossBar.addPlayer(player);
+                electricStormBossBar.addPlayer(player);
             } else {
-                solarFlareBossBar.removePlayer(player);
+                electricStormBossBar.removePlayer(player);
             }
         }
     }
 
     @EventHandler
-    public boolean isSolarFlareActive() {
-        return solarFlareTask != null && !solarFlareTask.isCancelled();
+    public boolean isElectricStormActive() {
+        return electricStormTask != null && !electricStormTask.isCancelled();
     }
 }

@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'org.rexi'
-version = '0.2-BETA'
+version = '0.3-BETA'
 
 repositories {
     mavenCentral()

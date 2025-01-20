@@ -6,6 +6,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.rexi.climateEvents.events.AcidRainEvent;
+import org.rexi.climateEvents.events.ElectricStormEvent;
 import org.rexi.climateEvents.events.SolarFlareEvent;
 import org.rexi.climateEvents.utils.CommandHandler;
 import org.rexi.climateEvents.utils.TabCommandCompleter;
@@ -34,9 +35,11 @@ public final class ClimateEvents extends JavaPlugin {
 
         AcidRainEvent acidRainEvent = new AcidRainEvent(this);
         SolarFlareEvent solarFlareEvent = new SolarFlareEvent(this);
-        getCommand("climateevents").setExecutor(new CommandHandler(acidRainEvent, solarFlareEvent));
+        ElectricStormEvent electricStormEvent = new ElectricStormEvent(this);
+        getCommand("climateevents").setExecutor(new CommandHandler(acidRainEvent, solarFlareEvent, electricStormEvent));
         Bukkit.getPluginManager().registerEvents(acidRainEvent, this);
         Bukkit.getPluginManager().registerEvents(solarFlareEvent, this);
+        Bukkit.getPluginManager().registerEvents(electricStormEvent, this);
 
         Bukkit.getConsoleSender().sendMessage(prefix
                 .append(Component.text("El plugin ha sido activado").color(NamedTextColor.GREEN)));

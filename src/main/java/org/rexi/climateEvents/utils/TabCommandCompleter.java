@@ -15,11 +15,15 @@ public class TabCommandCompleter implements TabCompleter {
         if (args.length == 1) {
             suggestions.add("acidrain");
             suggestions.add("solarflare");
+            suggestions.add("electricstorm");
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("acidrain")) {
                 suggestions.add("start");
                 suggestions.add("stop");
             } else if (args[0].equalsIgnoreCase("solarflare")) {
+                suggestions.add("start");
+                suggestions.add("stop");
+            } else if (args[0].equalsIgnoreCase("electricstorm")) {
                 suggestions.add("start");
                 suggestions.add("stop");
             }

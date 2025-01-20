@@ -1,81 +1,90 @@
-[21:21:10] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.3+9-LTS; Eclipse Adoptium Temurin-21.0.3+9) on Windows 11 10.0 (amd64)
-[21:21:10] [ServerMain/INFO]: [bootstrap] Loading Paper 1.21.1-132-ver/1.21.1@b48403b (2024-11-21T10:14:27Z) for Minecraft 1.21.1
-[21:21:11] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[21:21:12] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Remapping plugin 'C:\Users\Usuario\IdeaProjects\ClimateEvents\build\libs\ClimateEvents-0.2-BETA.jar'...
-[21:21:12] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Done remapping plugin 'C:\Users\Usuario\IdeaProjects\ClimateEvents\build\libs\ClimateEvents-0.2-BETA.jar' in 600ms.
-[21:21:13] [ServerMain/INFO]: [PluginInitializerManager] Initialized 1 plugin
-[21:21:13] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (1):
- - ClimateEvents (0.2-BETA)
-[21:21:19] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[21:21:21] [ServerMain/INFO]: Loaded 1290 recipes
-[21:21:22] [ServerMain/INFO]: Loaded 1399 advancements
-[21:21:22] [Server thread/INFO]: Starting minecraft server version 1.21.1
-[21:21:22] [Server thread/INFO]: Loading properties
-[21:21:22] [Server thread/INFO]: This server is running Paper version 1.21.1-132-ver/1.21.1@b48403b (2024-11-21T10:14:27Z) (Implementing API version 1.21.1-R0.1-SNAPSHOT)
-[21:21:23] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[21:21:23] [Server thread/INFO]: Using 4 threads for Netty based IO
-[21:21:23] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[21:21:24] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 4 worker threads, and population gen parallelism of 4 threads
-[21:21:24] [Server thread/INFO]: Default game type: SURVIVAL
-[21:21:24] [Server thread/INFO]: Generating keypair
-[21:21:24] [Server thread/INFO]: Starting Minecraft server on *:25565
-[21:21:24] [Server thread/INFO]: Using default channel type
-[21:21:24] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[21:21:24] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[21:21:24] [Server thread/INFO]: [ClimateEvents] Loading server plugin ClimateEvents v0.2-BETA
-[21:21:24] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[21:21:24] [Server thread/INFO]: Preparing level "world"
-[21:21:25] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[21:21:26] [Server thread/INFO]: Time elapsed: 1394 ms
-[21:21:26] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[21:21:27] [Server thread/INFO]: Time elapsed: 255 ms
-[21:21:27] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[21:21:27] [Server thread/INFO]: Time elapsed: 95 ms
-[21:21:27] [Server thread/INFO]: [ClimateEvents] Enabling ClimateEvents v0.2-BETA
-[21:21:27] [Server thread/ERROR]: [ClimateEvents] ClimateEvents v0.2-BETA attempted to register an invalid EventHandler method signature "public boolean org.rexi.climateEvents.events.SolarFlareEvent.isSolarFlareActive()" in class org.rexi.climateEvents.events.SolarFlareEvent
-[21:21:27] [Server thread/INFO]: [ClimateEvents] El plugin ha sido activado
-[21:21:27] [Server thread/INFO]: [ClimateEvents] Gracias por usar plugins de Rexi666 :D
-[21:21:27] [Server thread/INFO]: [spark] Starting background profiler...
-[21:21:27] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
-[21:21:27] [Server thread/INFO]: Done preparing level "world" (2.589s)
-[21:21:27] [Server thread/INFO]: Running delayed init tasks
-[21:21:27] [Server thread/INFO]: Done (17.624s)! For help, type "help"
-[21:21:27] [Server thread/INFO]: Timings Reset
-[21:21:35] [User Authenticator #0/INFO]: UUID of player Rexigamer666 is 3fe8ef0e-c4ae-4db3-8481-76618f855453
-[21:21:36] [Server thread/INFO]: Rexigamer666 joined the game
-[21:21:36] [Server thread/INFO]: Rexigamer666[/127.0.0.1:58378] logged in with entity id 166 at ([world]48.69999998807907, 68.0, 87.71025813780234)
-[21:21:43] [Server thread/INFO]: Rexigamer666 issued server command: /ce solarflare start
-[21:21:43] [Server thread/INFO]: [ClimateEvents] La erupción solar ha comenzado
-[21:22:14] [Server thread/INFO]: Rexigamer666 issued server command: /ce acidrain start
-[21:22:15] [Server thread/INFO]: Rexigamer666 issued server command: /ce acidrain stop
-[21:22:19] [Server thread/INFO]: Rexigamer666 issued server command: /ce solarflare start
-[21:22:22] [Server thread/INFO]: Rexigamer666 issued server command: /ce solarflare stop
-[21:22:22] [Server thread/INFO]: [ClimateEvents] La erupción solar ha terminado
-[21:22:34] [Server thread/INFO]: Rexigamer666 lost connection: Disconnected
-[21:22:34] [Server thread/INFO]: Rexigamer666 left the game
-[21:22:37] [Server thread/INFO]: Stopping the server
-[21:22:37] [Server thread/INFO]: Stopping server
-[21:22:37] [Server thread/INFO]: [ClimateEvents] Disabling ClimateEvents v0.2-BETA
-[21:22:37] [Server thread/INFO]: [ClimateEvents] El plugin ha sido desactivado
-[21:22:37] [Server thread/INFO]: [ClimateEvents] Gracias por usar plugins de Rexi666 :D
-[21:22:37] [Server thread/INFO]: Saving players
-[21:22:37] [Server thread/INFO]: Saving worlds
-[21:22:37] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[21:22:37] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[21:22:37] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[21:22:37] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[21:22:40] [Server thread/INFO]: [ChunkHolderManager] Saved 1824 block chunks, 726 entity chunks, 0 poi chunks in world 'world' in 2,83s
-[21:22:40] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[21:22:40] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[21:22:40] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[21:22:40] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[21:22:40] [Server thread/INFO]: [ChunkHolderManager] Saved 49 block chunks, 49 entity chunks, 0 poi chunks in world 'world_nether' in 0,11s
-[21:22:40] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[21:22:40] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[21:22:40] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[21:22:40] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[21:22:40] [Server thread/INFO]: [ChunkHolderManager] Saved 49 block chunks, 49 entity chunks, 0 poi chunks in world 'world_the_end' in 0,06s
-[21:22:40] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[21:22:40] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[21:22:40] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[21:22:40] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[23:34:35] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.3+9-LTS; Eclipse Adoptium Temurin-21.0.3+9) on Windows 11 10.0 (amd64)
+[23:34:35] [ServerMain/INFO]: [bootstrap] Loading Paper 1.21.1-132-ver/1.21.1@b48403b (2024-11-21T10:14:27Z) for Minecraft 1.21.1
+[23:34:37] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[23:34:37] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Remapping plugin 'C:\Users\Usuario\IdeaProjects\ClimateEvents\build\libs\ClimateEvents-0.3-BETA.jar'...
+[23:34:38] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Done remapping plugin 'C:\Users\Usuario\IdeaProjects\ClimateEvents\build\libs\ClimateEvents-0.3-BETA.jar' in 619ms.
+[23:34:38] [ServerMain/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[23:34:38] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - ClimateEvents (0.3-BETA)
+[23:34:44] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[23:34:46] [ServerMain/INFO]: Loaded 1290 recipes
+[23:34:47] [ServerMain/INFO]: Loaded 1399 advancements
+[23:34:47] [Server thread/INFO]: Starting minecraft server version 1.21.1
+[23:34:47] [Server thread/INFO]: Loading properties
+[23:34:47] [Server thread/INFO]: This server is running Paper version 1.21.1-132-ver/1.21.1@b48403b (2024-11-21T10:14:27Z) (Implementing API version 1.21.1-R0.1-SNAPSHOT)
+[23:34:48] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[23:34:49] [Server thread/INFO]: Using 4 threads for Netty based IO
+[23:34:49] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[23:34:49] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 4 worker threads, and population gen parallelism of 4 threads
+[23:34:50] [Server thread/INFO]: Default game type: SURVIVAL
+[23:34:50] [Server thread/INFO]: Generating keypair
+[23:34:50] [Server thread/INFO]: Starting Minecraft server on *:25565
+[23:34:50] [Server thread/INFO]: Using default channel type
+[23:34:50] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[23:34:50] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[23:34:50] [Server thread/INFO]: [ClimateEvents] Loading server plugin ClimateEvents v0.3-BETA
+[23:34:50] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[23:34:50] [Server thread/INFO]: Preparing level "world"
+[23:34:51] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[23:34:52] [Server thread/INFO]: Time elapsed: 1299 ms
+[23:34:52] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[23:34:52] [Server thread/INFO]: Time elapsed: 235 ms
+[23:34:52] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[23:34:52] [Server thread/INFO]: Time elapsed: 87 ms
+[23:34:52] [Server thread/INFO]: [ClimateEvents] Enabling ClimateEvents v0.3-BETA
+[23:34:52] [Server thread/ERROR]: [ClimateEvents] ClimateEvents v0.3-BETA attempted to register an invalid EventHandler method signature "public boolean org.rexi.climateEvents.events.SolarFlareEvent.isSolarFlareActive()" in class org.rexi.climateEvents.events.SolarFlareEvent
+[23:34:52] [Server thread/ERROR]: [ClimateEvents] ClimateEvents v0.3-BETA attempted to register an invalid EventHandler method signature "public boolean org.rexi.climateEvents.events.ElectricStormEvent.isElectricStormActive()" in class org.rexi.climateEvents.events.ElectricStormEvent
+[23:34:52] [Server thread/INFO]: [ClimateEvents] El plugin ha sido activado
+[23:34:52] [Server thread/INFO]: [ClimateEvents] Gracias por usar plugins de Rexi666 :D
+[23:34:52] [Server thread/INFO]: [spark] Starting background profiler...
+[23:34:52] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[23:34:52] [Server thread/INFO]: Done preparing level "world" (2.477s)
+[23:34:52] [Server thread/INFO]: Running delayed init tasks
+[23:34:52] [Server thread/INFO]: Done (19.032s)! For help, type "help"
+[23:34:52] [Server thread/INFO]: Timings Reset
+[23:34:54] [Server thread/INFO]: Unknown or incomplete command, see below for error
+plpl<--[HERE]
+[23:34:58] [Server thread/INFO]: Server Plugins (1):
+[23:34:58] [Server thread/INFO]: Bukkit Plugins:
+[23:34:58] [Server thread/INFO]:  - ClimateEvents
+[23:35:04] [User Authenticator #0/INFO]: UUID of player Rexigamer666 is 3fe8ef0e-c4ae-4db3-8481-76618f855453
+[23:35:05] [Server thread/INFO]: Rexigamer666 joined the game
+[23:35:05] [Server thread/INFO]: Rexigamer666[/127.0.0.1:51215] logged in with entity id 148 at ([world]61.402136466534486, 86.65222194883991, 110.46607567443624)
+[23:35:18] [Server thread/INFO]: Rexigamer666 issued server command: /gamemode survival
+[23:35:18] [Server thread/INFO]: [Rexigamer666: Set own game mode to Survival Mode]
+[23:35:23] [Server thread/INFO]: Rexigamer666 issued server command: /ce electricstorm
+[23:35:25] [Server thread/INFO]: Rexigamer666 issued server command: /ce
+[23:35:52] [Server thread/INFO]: Rexigamer666 issued server command: /ce electricstorm start
+[23:35:52] [Server thread/INFO]: [ClimateEvents] La tormenta eléctrica ha comenzado
+[23:36:36] [Server thread/INFO]: Rexigamer666 issued server command: /ce acidrain start
+[23:36:38] [Server thread/INFO]: Rexigamer666 issued server command: /ce acidrain stop
+[23:36:42] [Server thread/INFO]: Rexigamer666 issued server command: /ce electricstorm stop
+[23:36:42] [Server thread/INFO]: [ClimateEvents] La tormenta eléctrica ha terminado
+[23:37:14] [Server thread/INFO]: Rexigamer666 lost connection: Disconnected
+[23:37:14] [Server thread/INFO]: Rexigamer666 left the game
+[23:37:18] [Server thread/INFO]: Stopping the server
+[23:37:18] [Server thread/INFO]: Stopping server
+[23:37:18] [Server thread/INFO]: [ClimateEvents] Disabling ClimateEvents v0.3-BETA
+[23:37:18] [Server thread/INFO]: [ClimateEvents] El plugin ha sido desactivado
+[23:37:18] [Server thread/INFO]: [ClimateEvents] Gracias por usar plugins de Rexi666 :D
+[23:37:18] [Server thread/INFO]: Saving players
+[23:37:18] [Server thread/INFO]: Saving worlds
+[23:37:18] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[23:37:18] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[23:37:18] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[23:37:18] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[23:37:21] [Server thread/INFO]: [ChunkHolderManager] Saved 1417 block chunks, 727 entity chunks, 0 poi chunks in world 'world' in 2,53s
+[23:37:21] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[23:37:21] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[23:37:21] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[23:37:21] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[23:37:21] [Server thread/INFO]: [ChunkHolderManager] Saved 49 block chunks, 49 entity chunks, 0 poi chunks in world 'world_nether' in 0,08s
+[23:37:21] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[23:37:21] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[23:37:21] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[23:37:21] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[23:37:21] [Server thread/INFO]: [ChunkHolderManager] Saved 49 block chunks, 49 entity chunks, 0 poi chunks in world 'world_the_end' in 0,03s
+[23:37:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[23:37:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[23:37:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[23:37:21] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
