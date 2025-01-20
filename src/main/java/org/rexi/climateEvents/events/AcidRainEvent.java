@@ -47,26 +47,26 @@ public class AcidRainEvent implements Listener{
     }
 
     public void startAcidRain() {
-        if (acidRainTask != null && !acidRainTask.isCancelled()) {
+        if (ClimateEvents.getInstance().isEventActive()) {
             return; // La lluvia ácida ya está activa
         }
 
         // Iniciar la lluvia ácida
         World world = mundo;
         if (world == null) {
-            plugin.getLogger().warning(prefix + "El mundo 'world' no existe.");
+            plugin.getLogger().warning(prefix + "El mundo " + mundo + " no existe.");
             return;
         }
         world.setStorm(true);
         Bukkit.getConsoleSender().sendMessage(prefix.append(Component.text("La lluvia ácida ha comenzado.").color(NamedTextColor.YELLOW)));
+        ClimateEvents.getInstance().eventActive = true;
 
         // Añadir jugadores a la BossBar
         for (Player player : world.getPlayers()) {
             acidRainBossBar.addPlayer(player);
-            player.sendMessage(prefix.append(Component.text("¡La lluvia ácida ha empezado!").color(NamedTextColor.GREEN)));
+            player.sendMessage(Component.text("¡La lluvia ácida ha empezado!").color(NamedTextColor.GREEN));
         }
         acidRainBossBar.setVisible(true);
-        acidRainBossBar.setColor(BarColor.GREEN);
 
         // Declarar una variable para llevar la cuenta del tiempo transcurrido
         long[] elapsedTicks = {0};
@@ -114,6 +114,7 @@ public class AcidRainEvent implements Listener{
             World world = mundo;
             if (world != null) {
                 world.setStorm(false);
+                ClimateEvents.getInstance().eventActive = false;
                 Bukkit.getConsoleSender().sendMessage(prefix.append(Component.text("La lluvia ácida ha terminado.").color(NamedTextColor.YELLOW)));
                 for (Player player : world.getPlayers()) {
                     player.sendMessage(prefix.append(Component.text("¡La lluvia ácida ha terminado!").color(NamedTextColor.GREEN)));
