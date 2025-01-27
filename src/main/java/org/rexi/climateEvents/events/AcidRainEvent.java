@@ -28,7 +28,8 @@ public class AcidRainEvent implements Listener{
 
     private final JavaPlugin plugin;
     private BukkitTask acidRainTask;
-    private static final long ACID_RAIN_DURATION = 6000L; // 5 minutos en ticks
+    private static final long event_duration = ClimateEvents.getInstance().getConfig().getLong("event_duration");
+    private static final long ACID_RAIN_DURATION = event_duration * 20L; // 5 minutos en ticks
     private BossBar acidRainBossBar;
 
     Component titulo = Component.text("¡Cuidado! Lluvia Ácida en curso").color(NamedTextColor.RED).decorate(TextDecoration.BOLD);

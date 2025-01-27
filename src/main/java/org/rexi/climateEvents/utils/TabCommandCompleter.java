@@ -16,6 +16,7 @@ public class TabCommandCompleter implements TabCompleter {
             suggestions.add("acidrain");
             suggestions.add("solarflare");
             suggestions.add("electricstorm");
+            suggestions.add("sandstorm");
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("acidrain")) {
                 suggestions.add("start");
@@ -24,6 +25,9 @@ public class TabCommandCompleter implements TabCompleter {
                 suggestions.add("start");
                 suggestions.add("stop");
             } else if (args[0].equalsIgnoreCase("electricstorm")) {
+                suggestions.add("start");
+                suggestions.add("stop");
+            } else if (args[0].equalsIgnoreCase("sandstorm")) {
                 suggestions.add("start");
                 suggestions.add("stop");
             }

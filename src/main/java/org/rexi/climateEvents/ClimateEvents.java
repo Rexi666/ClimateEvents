@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.rexi.climateEvents.events.AcidRainEvent;
 import org.rexi.climateEvents.events.ElectricStormEvent;
+import org.rexi.climateEvents.events.SandStormEvent;
 import org.rexi.climateEvents.events.SolarFlareEvent;
 import org.rexi.climateEvents.utils.CommandHandler;
 import org.rexi.climateEvents.utils.TabCommandCompleter;
@@ -36,10 +37,12 @@ public final class ClimateEvents extends JavaPlugin {
         AcidRainEvent acidRainEvent = new AcidRainEvent(this);
         SolarFlareEvent solarFlareEvent = new SolarFlareEvent(this);
         ElectricStormEvent electricStormEvent = new ElectricStormEvent(this);
-        getCommand("climateevents").setExecutor(new CommandHandler(acidRainEvent, solarFlareEvent, electricStormEvent));
+        SandStormEvent sandStormEvent = new SandStormEvent(this);
+        getCommand("climateevents").setExecutor(new CommandHandler(acidRainEvent, solarFlareEvent, electricStormEvent, sandStormEvent));
         Bukkit.getPluginManager().registerEvents(acidRainEvent, this);
         Bukkit.getPluginManager().registerEvents(solarFlareEvent, this);
         Bukkit.getPluginManager().registerEvents(electricStormEvent, this);
+        Bukkit.getPluginManager().registerEvents(sandStormEvent, this);
 
         Bukkit.getConsoleSender().sendMessage(prefix
                 .append(Component.text("El plugin ha sido activado").color(NamedTextColor.GREEN)));
@@ -67,15 +70,25 @@ public final class ClimateEvents extends JavaPlugin {
 
     private void triggerRandomEvent() {
         if (!isEventActive()) {
-            if (random.nextBoolean()) {
-                new AcidRainEvent(this).startAcidRain();
-                eventActive = true;
-            } else {
-                new SolarFlareEvent(this).startSolarFlare();
-                eventActive = true;
+            int eventIndex = random.nextInt(4); // Genera un número aleatorio entre 0 y 2
+            switch (eventIndex) {
+                case 0:
+                    new AcidRainEvent(this).startAcidRain();
+                    break;
+                case 1:
+                    new SolarFlareEvent(this).startSolarFlare();
+                    break;
+                case 2:
+                    new ElectricStormEvent(this).startElectricStorm();
+                    break;
+                case 3:
+                    new SandStormEvent(this).startSandStorm();
+                    break;
             }
+            eventActive = true;
         } else {
             Bukkit.getConsoleSender().sendMessage(prefix.append(Component.text("Se ha intentado iniciar un evento pero ya había uno activo").color(NamedTextColor.RED)));
         }
     }
+
 }

@@ -1,2 +1,4 @@
 #World were the events occur
 world: "world"
+#Duration of the events on seconds
+event_duration: 300 # 300s = 5 minutes

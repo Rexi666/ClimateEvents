@@ -28,7 +28,8 @@ public class SolarFlareEvent implements Listener {
 
     private final JavaPlugin plugin;
     private BukkitTask solarFlareTask;
-    private static final long SOLAR_FLARE_DURATION = 6000L;
+    private static final long event_duration = ClimateEvents.getInstance().getConfig().getLong("event_duration");
+    private static final long SOLAR_FLARE_DURATION = event_duration * 20L; // 5 minutos en ticks
     private BossBar solarFlareBossBar;
     private final Random random = new Random();
     private long originalTime;

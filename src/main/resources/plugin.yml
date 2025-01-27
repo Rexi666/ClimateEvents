@@ -1,5 +1,5 @@
 name: ClimateEvents
-version: '0.3-BETA'
+version: '0.4-BETA'
 main: org.rexi.climateEvents.ClimateEvents
 api-version: '1.21'
 author: Rexi666
@@ -11,9 +11,11 @@ commands:
       acidrain:
         description: Controla el evento de lluvia ácida.
       solarflare:
-        description: Controla el evento de llamarada solar.
+        description: Controla el evento de llamarada solar
       electricstorm:
         description: Contola el evento de tormenta eléctrica
+      sandstorm:
+        description: Contola el evento de tormenta de arena
 permissions:
   climateevents.admin:
     description: Permite usar los comandos de admin

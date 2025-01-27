@@ -31,7 +31,8 @@ public class ElectricStormEvent implements Listener {
 
     private final JavaPlugin plugin;
     private BukkitTask electricStormTask;
-    private static final long ELECTRIC_STORM_DURATION = 6000L;
+    private static final long event_duration = ClimateEvents.getInstance().getConfig().getLong("event_duration");
+    private static final long ELECTRIC_STORM_DURATION = event_duration * 20L; // 5 minutos en ticks
     private static final double LIGHTNING_PROBABILITY = 0.1;
     private BossBar electricStormBossBar;
     private final Random random = new Random();
