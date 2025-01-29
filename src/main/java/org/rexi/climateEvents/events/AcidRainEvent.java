@@ -28,8 +28,8 @@ public class AcidRainEvent implements Listener{
 
     private final JavaPlugin plugin;
     private BukkitTask acidRainTask;
-    private static final long event_duration = ClimateEvents.getInstance().getConfig().getLong("event_duration");
-    private static final long ACID_RAIN_DURATION = event_duration * 20L; // 5 minutos en ticks
+    private static final int event_duration = ClimateEvents.getInstance().getConfig().getInt("event_duration");
+    private static final long ACID_RAIN_DURATION = event_duration * 20L;
     private BossBar acidRainBossBar;
 
     Component titulo = Component.text("¡Cuidado! Lluvia Ácida en curso").color(NamedTextColor.RED).decorate(TextDecoration.BOLD);
@@ -114,7 +114,7 @@ public class AcidRainEvent implements Listener{
                 ClimateEvents.getInstance().eventActive = false;
                 Bukkit.getConsoleSender().sendMessage(prefix.append(Component.text("La lluvia ácida ha terminado.").color(NamedTextColor.YELLOW)));
                 for (Player player : world.getPlayers()) {
-                    player.sendMessage(prefix.append(Component.text("¡La lluvia ácida ha terminado!").color(NamedTextColor.GREEN)));
+                    player.sendMessage(Component.text("¡La lluvia ácida ha terminado!").color(NamedTextColor.GREEN));
                     acidRainBossBar.removePlayer(player);
                 }
             }

@@ -1,4 +1,5 @@
-#World were the events occur
-world: "world"
-#Duration of the events on seconds
-event_duration: 300 # 300s = 5 minutes
+configVersion: 2 #DONT TOUCH THIS NUMBER
+
+world: "world" #World were the events occur
+event_duration: 300 #Duration of the events on seconds || 300s = 5 minutes
+event_days: 10 #Duration between events on minecraft days

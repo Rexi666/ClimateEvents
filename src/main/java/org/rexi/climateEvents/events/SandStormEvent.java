@@ -28,8 +28,8 @@ public class SandStormEvent implements Listener {
 
     private final JavaPlugin plugin;
     private BukkitTask sandStormTask;
-    private static final long event_duration = ClimateEvents.getInstance().getConfig().getLong("event_duration");
-    private static final long SAND_STORM_DURATION = event_duration * 20L; // 5 minutos en ticks
+    private static final int event_duration = ClimateEvents.getInstance().getConfig().getInt("event_duration");
+    private static final long SAND_STORM_DURATION = event_duration * 20L;
     private BossBar sandStormBossBar;
     private Random random = new Random();
 
@@ -41,7 +41,7 @@ public class SandStormEvent implements Listener {
 
     public SandStormEvent(JavaPlugin plugin) {
         this.plugin = plugin;
-        sandStormBossBar = Bukkit.createBossBar(title, BarColor.GREEN, BarStyle.SEGMENTED_6);
+        sandStormBossBar = Bukkit.createBossBar(title, BarColor.YELLOW, BarStyle.SEGMENTED_6);
     }
 
     public void startSandStorm() {
@@ -122,7 +122,7 @@ public class SandStormEvent implements Listener {
                 world.setStorm(false);
                 Bukkit.getConsoleSender().sendMessage(prefix.append(Component.text("La tormenta de arena ha terminado").color(NamedTextColor.YELLOW)));
                 for (Player player : world.getPlayers()) {
-                    player.sendMessage(prefix.append(Component.text("¡La tormenta de arena ha terminado!").color(NamedTextColor.GREEN)));
+                    player.sendMessage(Component.text("¡La tormenta de arena ha terminado!").color(NamedTextColor.GREEN));
                     sandStormBossBar.removePlayer(player);
                 }
             }

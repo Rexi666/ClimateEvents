@@ -4,6 +4,9 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.rexi.climateEvents.events.AcidRainEvent;
 import org.rexi.climateEvents.events.ElectricStormEvent;
@@ -12,6 +15,8 @@ import org.rexi.climateEvents.events.SolarFlareEvent;
 import org.rexi.climateEvents.utils.CommandHandler;
 import org.rexi.climateEvents.utils.TabCommandCompleter;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Random;
 
 public final class ClimateEvents extends JavaPlugin {
@@ -24,13 +29,17 @@ public final class ClimateEvents extends JavaPlugin {
 
     private final Random random = new Random();
     public boolean eventActive = false;
+    private int DIAS_ENTRE_EVENTOS;
+    private long diasHastaProximoEvento;
 
     @Override
     public void onEnable() {
-        getConfig().options().copyDefaults();
-        saveDefaultConfig();
+        loadConfig();
 
         instance = this;
+
+        DIAS_ENTRE_EVENTOS = getConfig().getInt("event_days");
+        diasHastaProximoEvento = DIAS_ENTRE_EVENTOS;
 
         getCommand("climateevents").setTabCompleter(new TabCommandCompleter());
 
@@ -49,7 +58,22 @@ public final class ClimateEvents extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(prefix
                 .append(Component.text("Gracias por usar plugins de Rexi666 :D").color(NamedTextColor.DARK_BLUE)));
 
-        Bukkit.getScheduler().runTaskTimer(this, this::triggerRandomEvent, 240000L, 240000L);
+        Bukkit.getScheduler().runTaskTimer(this, this::notificarDiasRestantes, 0L, 24000L);
+    }
+
+    private void notificarDiasRestantes() {
+        if (diasHastaProximoEvento > 0) {
+            diasHastaProximoEvento--;
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.sendMessage(Component.text("------------------------------------").color(NamedTextColor.AQUA).decorate(TextDecoration.BOLD));
+                player.sendMessage(Component.text("Faltan" + diasHastaProximoEvento + "días para el próximo evento climático").color(NamedTextColor.DARK_PURPLE));
+                player.sendMessage(Component.text("------------------------------------").color(NamedTextColor.AQUA).decorate(TextDecoration.BOLD));
+            }
+        } else {
+            // Iniciar evento y reiniciar contador
+            triggerRandomEvent();
+            diasHastaProximoEvento = DIAS_ENTRE_EVENTOS;
+        }
     }
 
     @Override
@@ -68,9 +92,22 @@ public final class ClimateEvents extends JavaPlugin {
         return eventActive;
     }
 
+    public void loadConfig() {
+        saveDefaultConfig();
+        int configVersion = getConfig().getInt("configVersion", 1);
+        if (configVersion < 2) {
+            // Realiza las actualizaciones necesarias
+            getConfig().set("event_duration", 300);
+            getConfig().set("event_days", 10);
+            saveConfig();
+            getConfig().set("configVersion", 2);
+            saveConfig();
+        }
+    }
+
     private void triggerRandomEvent() {
         if (!isEventActive()) {
-            int eventIndex = random.nextInt(4); // Genera un número aleatorio entre 0 y 2
+            int eventIndex = random.nextInt(4);
             switch (eventIndex) {
                 case 0:
                     new AcidRainEvent(this).startAcidRain();

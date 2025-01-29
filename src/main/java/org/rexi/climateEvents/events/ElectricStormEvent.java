@@ -31,8 +31,8 @@ public class ElectricStormEvent implements Listener {
 
     private final JavaPlugin plugin;
     private BukkitTask electricStormTask;
-    private static final long event_duration = ClimateEvents.getInstance().getConfig().getLong("event_duration");
-    private static final long ELECTRIC_STORM_DURATION = event_duration * 20L; // 5 minutos en ticks
+    private static final int event_duration = ClimateEvents.getInstance().getConfig().getInt("event_duration");
+    private static final long ELECTRIC_STORM_DURATION = event_duration * 20L;
     private static final double LIGHTNING_PROBABILITY = 0.1;
     private BossBar electricStormBossBar;
     private final Random random = new Random();
@@ -45,7 +45,7 @@ public class ElectricStormEvent implements Listener {
 
     public ElectricStormEvent(JavaPlugin plugin) {
         this.plugin = plugin;
-        electricStormBossBar = Bukkit.createBossBar(title, BarColor.RED, BarStyle.SEGMENTED_6);
+        electricStormBossBar = Bukkit.createBossBar(title, BarColor.BLUE, BarStyle.SEGMENTED_6);
     }
 
     public void startElectricStorm() {
@@ -157,7 +157,6 @@ public class ElectricStormEvent implements Listener {
         }
     }
 
-    @EventHandler
     public boolean isElectricStormActive() {
         return electricStormTask != null && !electricStormTask.isCancelled();
     }
